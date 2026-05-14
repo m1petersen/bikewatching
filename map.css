@@ -30,7 +30,6 @@ body {
   cursor: pointer; 
 }
 
-/* Step 6: Shared color variables for circles and legend */
 #map svg circle,
 .legend > div {
   --color-departures: steelblue;
@@ -43,29 +42,29 @@ body {
 }
 
 #map svg circle {
-  fill: var(--color); /* Dynamically uses the CSS variable */
+  fill: var(--color);
   fill-opacity: 0.6;
   stroke: white;
   stroke-width: 1px;
   pointer-events: auto;
 }
 
-/* Step 6.2: Legend Styles (Design 1: Blocks) */
+
 .legend {
   display: flex;
   width: 100%;
   margin-block: 1em;
-  gap: 1px; /* Just enough to prevent colors from touching */
+  gap: 1px;
 }
 
 .legend > div {
   flex: 1;
-  padding: 0.5em 2em; /* Significantly more horizontal padding */
+  padding: 0.5em 2em;
   background-color: var(--color);
-  color: white; /* Good contrast against steelblue/darkorange */
+  color: white;
   font-family: sans-serif;
   font-weight: bold;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); /* Extra legibility */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 .legend > div:first-child {
