@@ -1,0 +1,83 @@
+html,
+body {
+  margin: 0;
+  padding: 5;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  flex-direction: column; /* Allows legend to sit underneath map properly */
+}
+
+#map {
+  width: 100%; /* Adjust width to your desired size */
+  height: 100%; /* Adjust height to your desired size */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for effect */
+  border-radius: 8px; /* Optional: rounded corners */
+}
+
+#map svg {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#time-slider {
+  width: 400px;
+  cursor: pointer; 
+}
+
+/* Step 6: Shared color variables for circles and legend */
+#map svg circle,
+.legend > div {
+  --color-departures: steelblue;
+  --color-arrivals: darkorange;
+  --color: color-mix(
+    in oklch,
+    var(--color-departures) calc(100% * var(--departure-ratio)),
+    var(--color-arrivals)
+  );
+}
+
+#map svg circle {
+  fill: var(--color); /* Dynamically uses the CSS variable */
+  fill-opacity: 0.6;
+  stroke: white;
+  stroke-width: 1px;
+  pointer-events: auto;
+}
+
+/* Step 6.2: Legend Styles (Design 1: Blocks) */
+.legend {
+  display: flex;
+  width: 100%;
+  margin-block: 1em;
+  gap: 1px; /* Just enough to prevent colors from touching */
+}
+
+.legend > div {
+  flex: 1;
+  padding: 0.5em 2em; /* Significantly more horizontal padding */
+  background-color: var(--color);
+  color: white; /* Good contrast against steelblue/darkorange */
+  font-family: sans-serif;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); /* Extra legibility */
+}
+
+.legend > div:first-child {
+  text-align: left;
+  border-radius: 8px 0 0 8px;
+}
+
+.legend > div:nth-child(2) {
+  text-align: center;
+}
+
+.legend > div:last-child {
+  text-align: right;
+  border-radius: 0 8px 8px 0;
+}
